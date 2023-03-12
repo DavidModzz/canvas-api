@@ -82,7 +82,7 @@ can.context.drawImage(bg, 320, 0, 709, 360)
     res.send(canvas.create.toBuffer())
 })
 
-router.get('/api/maker/goodbye', cekKey, async (req, res, next) => {
+router.get('/api/maker/goodbye', async (req, res, next) => {
 	var name = req.query.name
     var grup = req.query.gpname
 	var pp = req.query.pp
