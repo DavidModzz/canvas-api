@@ -12,7 +12,7 @@ const { shortText } = require("limit-text-js")
 
 router.get('/', async (req, res, next) => {
   res.json({ endpoints : 2, welcome : "/api/maker/welcome", goodbye : "/api/maker/goodbye"})
-}
+})
 
 router.get('/api/maker/welcome', async (req, res, next) => {
 	var name = req.query.name
