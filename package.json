@@ -1,0 +1,45 @@
+{
+  "name": "canvas-api",
+  "version": "1.1.0",
+  "description": "api para generar imagenes para bots",
+  "main": "connect.js",
+  "scripts": {
+    "start": "node connect.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavidModzz/canvas-api.git"
+  },
+  "keywords": [
+    "whatsappbots",
+    "canvas",
+    "api",
+    "welcome",
+    "goodbye"
+  ],
+  "author": "DavidModzz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidModzz/canvas-api/issues"
+  },
+  "dependencies": {
+    "canvas": "^2.11.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs-extra": "^8.1.0",
+    "image-url-validator": "^1.0.4",
+    "jquery": "^3.6.4",
+    "moment": "^2.29.4",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "path-exists": "^3.0.0",
+    "path-is-absolute": "^1.0.1",
+    "path-key": "^3.1.1",
+    "path-to-regexp": "^0.1.7",
+    "request": "^2.88.2",
+    "limit-text-js": "^1.0.2",
+    "ssl-express-www": "^3.0.7"
+  },
+  "homepage": "https://github.com/DavidModzz/canvas-api"
+}
