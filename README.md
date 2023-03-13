@@ -8,12 +8,12 @@ Haga clic en el botón a continuación para desplegar esta aplicación en Render
 
 Build command :
 
-´´´
+```
 npm install
-´´´
+```
 
 Start command :
 
-´´´
+```
 node connect.js
-´´´
+```
