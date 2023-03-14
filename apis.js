@@ -11,7 +11,7 @@ const isNumber = require('is-number');
 //―――――――――――――――――――――――――――――――――――――――――― ┏ Maker ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
 
-router.get('/api/maker/circle', async (req, res) => {
+router.get('/maker/circle', async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
 	var img = await isImageURL(text)
@@ -24,7 +24,7 @@ router.get('/api/maker/circle', async (req, res) => {
 })
 
 
-router.get('/api/maker/beautiful', async (req, res) => {
+router.get('/maker/beautiful', async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
 	var img = await isImageURL(text)
@@ -36,7 +36,7 @@ router.get('/api/maker/beautiful', async (req, res) => {
 })
 
 
-router.get('/api/maker/blur',  async (req, res) => {
+router.get('/maker/blur',  async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
 	var img = await isImageURL(text)
@@ -49,7 +49,7 @@ router.get('/api/maker/blur',  async (req, res) => {
 })
 
 
-router.get('/api/maker/darkness',  async (req, res) => {
+router.get('/maker/darkness',  async (req, res) => {
 	var text = req.query.url
 	var no = req.query.no
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
@@ -65,7 +65,7 @@ router.get('/api/maker/darkness',  async (req, res) => {
 	res.send(hasil)
 })
 
-router.get('/api/maker/facepalm', async (req, res) => {
+router.get('/maker/facepalm', async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
 	var img = await isImageURL(text)
@@ -77,7 +77,7 @@ router.get('/api/maker/facepalm', async (req, res) => {
   
 })
 
-router.get('/api/maker/invert', async (req, res) => {
+router.get('/maker/invert', async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
 	var img = await isImageURL(text)
@@ -89,7 +89,7 @@ router.get('/api/maker/invert', async (req, res) => {
   
 })
 
-router.get('/api/maker/pixelate', async (req, res) => {
+router.get('/maker/pixelate', async (req, res) => {
 	var text = req.query.url
 	var no = req.query.no
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
@@ -107,7 +107,7 @@ router.get('/api/maker/pixelate', async (req, res) => {
 })
 
 
-router.get('/api/maker/rainbow', async (req, res) => {
+router.get('/maker/rainbow', async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
 	var img = await isImageURL(text)
@@ -119,7 +119,7 @@ router.get('/api/maker/rainbow', async (req, res) => {
   
 })
 
-router.get('/api/maker/resize', async (req, res) => {
+router.get('/maker/resize', async (req, res) => {
 	var text = req.query.url
 	var width = req.query.width
 	var height = req.query.height
@@ -146,7 +146,7 @@ router.get('/api/maker/resize', async (req, res) => {
   
 })
 
-router.get('/api/maker/trigger', async (req, res) => {
+router.get('/+maker/trigger', async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
 	var img = await isImageURL(text)
@@ -158,7 +158,7 @@ router.get('/api/maker/trigger', async (req, res) => {
   
 })
 
-router.get('/api/maker/wanted', async (req, res) => {
+router.get('/maker/wanted', async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
 	var img = await isImageURL(text)
@@ -170,7 +170,7 @@ router.get('/api/maker/wanted', async (req, res) => {
   
 })
 
-router.get('/api/maker/wasted', async (req, res) => {
+router.get('/maker/wasted', async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
 	var img = await isImageURL(text)
@@ -184,7 +184,7 @@ router.get('/api/maker/wasted', async (req, res) => {
 //[ - ////////// --- Api's maker --- ////////// - ]\\
 
 
-router.get('/api/maker/welcome', async (req, res, next) => {
+router.get('/maker/welcome', async (req, res, next) => {
 	var name = req.query.name
     var grup = req.query.gpname
     var member = req.query.member
@@ -254,7 +254,7 @@ can.context.drawImage(bg, 320, 0, 709, 360)
     res.send(canvas.create.toBuffer())
 })
 
-router.get('/api/maker/goodbye', async (req, res, next) => {
+router.get('/maker/goodbye', async (req, res, next) => {
 	var name = req.query.name
     var grup = req.query.gpname
 	var pp = req.query.pp
@@ -324,13 +324,13 @@ can.context.drawImage(bg, 320, 0, 709, 360)
     res.send(canvas.create.toBuffer())
 })
 
- router.all('*', async (req, res) => {
- res.status(404).json({
-status:404,
-error: 'Not Found!',
-endpoint: req.path
-})
-})
+//  router.all('*', async (req, res) => {
+//  res.status(404).json({
+// status:404,
+// error: 'Not Found!',
+// endpoint: req.path
+// })
+// })
 
 
 module.exports = router
