@@ -146,7 +146,7 @@ router.get('/maker/resize', async (req, res) => {
   
 })
 
-router.get('/+maker/trigger', async (req, res) => {
+router.get('/maker/trigger', async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
 	var img = await isImageURL(text)
