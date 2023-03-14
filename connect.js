@@ -18,7 +18,7 @@ app.use('/', mainrouter)
 
 
 app.get('/', async (req, res, next) => {
-  res.json({ endpoints : { maker : welcome : "/api/maker/welcome", goodbye : "/api/maker/goodbye", circle : "/api/maker/circle", beautiful : "/api/maker/beautiful", blur : "/api/maker/blur", facepalm : "/api/maker/facepalm", invert : "/api/maker/invert", rainbow : "/api/maker/rainbow", trigger : "/api/maker/trigger", wanted : "/api/maker/wanted", wasted : "/api/maker/wasted"}})
+  res.json({ endpoints : { maker : { welcome : "/api/maker/welcome", goodbye : "/api/maker/goodbye", circle : "/api/maker/circle", beautiful : "/api/maker/beautiful", blur : "/api/maker/blur", facepalm : "/api/maker/facepalm", invert : "/api/maker/invert", rainbow : "/api/maker/rainbow", trigger : "/api/maker/trigger", wanted : "/api/maker/wanted", wasted : "/api/maker/wasted"}}})
 })
 
 app.listen(PORT, () => {
