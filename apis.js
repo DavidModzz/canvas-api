@@ -174,7 +174,7 @@ router.get('/api/maker/wasted', async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
 	var img = await isImageURL(text)
-	if ( !img ) return res.json({ status : 400, message : "check the image link
+	if ( !img ) return res.json({ status : 400, message : "check the image link"}) 
 	const hasil =  await Canvacord.Canvas.wasted(text)
 	res.set({'Content-Type': 'image/png'})
 	res.send(hasil)
