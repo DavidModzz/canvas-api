@@ -14,7 +14,7 @@ app.set("json spaces",2)
 app.use(cors())
 app.use(secure)
 
-app.use('/', mainrouter)
+app.use('/api', mainrouter)
 
 
 app.get('/', async (req, res, next) => {
