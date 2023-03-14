@@ -5,6 +5,181 @@ const path = require('path');
 const isImageURL = require('image-url-validator').default
 const Canvas = require('canvas')
 const { shortText } = require("limit-text-js")
+const Canvacord = require("canvacord");
+const isNumber = require('is-number');
+
+//―――――――――――――――――――――――――――――――――――――――――― ┏ Maker ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
+
+
+router.get('/api/maker/circle', async (req, res) => {
+	var text = req.query.url
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	var img = await isImageURL(text)
+	if ( !img ) return res.json({ status : 400, message : "check the image link"}) 
+
+	const hasil =  await Canvacord.Canvas.circle(text);
+	res.set({'Content-Type': 'image/png'})
+	res.send(hasil)
+  
+})
+
+
+router.get('/api/maker/beautiful', async (req, res) => {
+	var text = req.query.url
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	var img = await isImageURL(text)
+	if ( !img ) return res.json({ status : 400, message : "check the image link"}) 
+
+	const hasil =  await Canvacord.Canvas.beautiful(text);
+	res.set({'Content-Type': 'image/png'})
+	res.send(hasil)
+})
+
+
+router.get('/api/maker/blur',  async (req, res) => {
+	var text = req.query.url
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	var img = await isImageURL(text)
+	if ( !img ) return res.json({ status : 400, message : "check the image link"}) 
+
+	const hasil =  await Canvacord.Canvas.blur(text)
+	res.set({'Content-Type': 'image/png'})
+	res.send(hasil)
+  
+})
+
+
+router.get('/api/maker/darkness',  async (req, res) => {
+	var text = req.query.url
+	var no = req.query.no
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	if (!no ) return res.json({ status : 400, message : "enter the parameter: no"})
+
+	var img = await isImageURL(text)
+	var n = isNumber(no)
+	if ( !img ) return res.json({ status : 400, message : "check the image link"}) 
+	if ( !n ) return res.json({ status : 400, message : "Check if the parameter no is a number"}) 
+
+	const hasil =  await Canvacord.Canvas.darkness(text,shortText(no, 3))
+	res.set({'Content-Type': 'image/png'})
+	res.send(hasil)
+})
+
+router.get('/api/maker/facepalm', async (req, res) => {
+	var text = req.query.url
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	var img = await isImageURL(text)
+	if ( !img ) return res.json({ status : 400, message : "check the image link"}) 
+
+	const hasil =  await Canvacord.Canvas.facepalm(text)
+	res.set({'Content-Type': 'image/png'})
+	res.send(hasil)
+  
+})
+
+router.get('/api/maker/invert', async (req, res) => {
+	var text = req.query.url
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	var img = await isImageURL(text)
+	if ( !img ) return res.json({ status : 400, message : "check the image link"}) 
+
+	const hasil =  await Canvacord.Canvas.invert(text)
+	res.set({'Content-Type': 'image/png'})
+	res.send(hasil)
+  
+})
+
+router.get('/api/maker/pixelate', async (req, res) => {
+	var text = req.query.url
+	var no = req.query.no
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	if (!no ) return res.json({ status : 400, message : "enter the parameter: no"})
+
+	var img = await isImageURL(text)
+	var n = isNumber(no)
+	if ( !img ) return res.json({ status : 400, message : "check the image link"}) 
+	if ( !n ) return res.json({ status : 400, message : "Check if the parameter no is a number"}) 
+
+	const hasil =  await Canvacord.Canvas.pixelate(text,convertStringToNumber(no))
+	res.set({'Content-Type': 'image/png'})
+	res.send(hasil)
+  
+})
+
+
+router.get('/api/maker/rainbow', async (req, res) => {
+	var text = req.query.url
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	var img = await isImageURL(text)
+	if ( !img ) return res.json({ status : 400, message : "check the image link"}) 
+
+	const hasil =  await Canvacord.Canvas.rainbow(text)
+	res.set({'Content-Type': 'image/png'})
+	res.send(hasil)
+  
+})
+
+router.get('/api/maker/resize', async (req, res) => {
+	var text = req.query.url
+	var width = req.query.width
+	var height = req.query.height
+
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	if (!width ) return res.json({ status : 400, message : "enter the parameter: width"})
+	if (!height ) return res.json({ status : 400, message : "enter the parameter: height"})
+
+	let w = width
+	let h = height
+	if (w>1000){ w = "1000"}
+	if (h>1000){ h = "1000"}
+
+	var img = await isImageURL(text)
+	var wid = isNumber(width)
+	var hei = isNumber(height)
+	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
+	if ( !wid ) return res.json({ status : false, creator : 'Alip', message : "check if width is a number"}) 
+	if ( !hei ) return res.json({ status : false, creator : 'Alip', message : "check if height is a number"}) 
+
+	const hasil =  await Canvacord.Canvas.resize(text, convertStringToNumber(w),  convertStringToNumber(h))
+	res.set({'Content-Type': 'image/png'})
+	res.send(hasil)
+  
+})
+
+router.get('/api/maker/trigger', async (req, res) => {
+	var text = req.query.url
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	var img = await isImageURL(text)
+	if ( !img ) return res.json({ status : 400, message : "check the image link"}) 
+
+	const hasil =  await Canvacord.Canvas.trigger(text)
+	res.set({'Content-Type': 'gif'})
+	res.send(hasil)
+  
+})
+
+router.get('/api/maker/wanted', async (req, res) => {
+	var text = req.query.url
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	var img = await isImageURL(text)
+	if ( !img ) return res.json({ status : 400, message : "check the image link"}) 
+
+	const hasil =  await Canvacord.Canvas.wanted(text)
+	res.set({'Content-Type': 'image/png'})
+	res.send(hasil)
+  
+})
+
+router.get('/api/maker/wasted', async (req, res) => {
+	var text = req.query.url
+	if (!text ) return res.json({ status : 400, message : "enter the parameter: url"})
+	var img = await isImageURL(text)
+	if ( !img ) return res.json({ status : 400, message : "check the image link
+	const hasil =  await Canvacord.Canvas.wasted(text)
+	res.set({'Content-Type': 'image/png'})
+	res.send(hasil)
+  
+})
 
 //[ - ////////// --- Api's maker --- ////////// - ]\\
 
